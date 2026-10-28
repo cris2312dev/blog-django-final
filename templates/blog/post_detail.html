@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'blog:post_list' %}" class="text-decoration-none">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ post.title|truncatechars:35 }}</li>
+            </ol>
+        </nav>
+
+        <article class="bg-white p-4 p-md-5 rounded-3 shadow-sm border mb-4">
+            <!-- Encabezado del Post -->
+            <header class="mb-4">
+                <h1 class="fw-bold display-5 mb-3">{{ post.title }}</h1>
+                {% if post.subtitle %}
+                    <h4 class="text-secondary fw-normal mb-3">{{ post.subtitle }}</h4>
+                {% endif %}
+
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 py-3 border-top border-bottom">
+                    <div class="d-flex align-items-center gap-3">
+                        {% if post.author.profile.avatar %}
+                            <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author.username }}" class="avatar-sm">
+                        {% else %}
+                            <div class="avatar-placeholder-sm">{{ post.author.username|first|upper }}</div>
+                        {% endif %}
+                        <div>
+                            <a href="{% url 'accounts:user_profile' post.author.username %}" class="fw-bold text-dark text-decoration-none d-block">
+                                {{ post.author.username }}
+                            </a>
+                            <small class="text-muted">Publicado el {{ post.created_at|date:"d \d\e F, Y \a \l\a\s H:i" }}</small>
+                        </div>
+                    </div>
+
+                    {% if user == post.author or user.is_superuser %}
+                        <div class="d-flex gap-2">
+                            <a href="{% url 'blog:post_update' post.pk %}" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-pencil me-1"></i>Editar
+                            </a>
+                            <a href="{% url 'blog:post_delete' post.pk %}" class="btn btn-outline-danger btn-sm">
+                                <i class="bi bi-trash me-1"></i>Eliminar
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </header>
+
+            <!-- Imagen Destacada (Si existe) -->
+            {% if post.image %}
+                <div class="mb-4 text-center">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid rounded-3 shadow-sm" style="max-height: 480px; width: 100%; object-fit: cover;">
+                </div>
+            {% endif %}
+
+            <!-- Contenido -->
+            <div class="post-content">
+                {{ post.content|linebreaks }}
+            </div>
+        </article>
+
+        <div class="text-center my-4">
+            <a href="{% url 'blog:post_list' %}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>Volver a la lista de publicaciones
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

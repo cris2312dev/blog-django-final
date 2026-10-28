@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3 text-center border-bottom">
+                <i class="bi bi-box-arrow-in-right text-primary display-6 mb-2"></i>
+                <h3 class="card-title fw-bold mb-0">Bienvenido</h3>
+                <small class="text-muted">Ingresa a tu cuenta para gestionar tus publicaciones</small>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger py-2 small">
+                            {% for error in form.non_field_errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label fw-semibold">Nombre de usuario</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                            <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required class="form-control" id="id_username" placeholder="Tu usuario">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label fw-semibold">Contraseña</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                            <input type="password" name="password" autocomplete="current-password" required class="form-control" id="id_password" placeholder="Tu contraseña">
+                        </div>
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary py-2 fw-semibold">
+                            Iniciar Sesión
+                        </button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-4 pt-3 border-top">
+                    <p class="text-secondary small mb-0">
+                        ¿No tienes una cuenta aún? 
+                        <a href="{% url 'accounts:register' %}" class="fw-bold text-decoration-none">Regístrate aquí</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Acerca de este Proyecto{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0 p-4 p-md-5">
+            <h1 class="fw-bold mb-3"><i class="bi bi-code-slash text-primary me-2"></i>Acerca del Blog Django</h1>
+            <p class="lead text-secondary">
+                Este proyecto representa la consolidación final de la formación en Python y Django, implementando una arquitectura web completa, segura y escalable.
+            </p>
+
+            <hr class="my-4">
+
+            <h4 class="fw-bold mb-3"><i class="bi bi-stars text-warning me-2"></i>Puntos Destacados</h4>
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <div class="p-3 bg-light rounded-3 border h-100">
+                        <h6 class="fw-bold"><i class="bi bi-shield-check text-success me-1"></i> Rutas Protegidas & Auth</h6>
+                        <p class="small text-muted mb-0">Gestión de usuarios completa, protección de vistas a nivel de backend mediante mixins y verificación de autoría en edición/borrado.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-light rounded-3 border h-100">
+                        <h6 class="fw-bold"><i class="bi bi-images text-info me-1"></i> Multimedia & Templates Robustos</h6>
+                        <p class="small text-muted mb-0">Carga de imágenes vía Pillow con fallback elegante para posts sin portada, asegurando estabilidad visual en todo momento.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-light rounded-3 border h-100">
+                        <h6 class="fw-bold"><i class="bi bi-search text-primary me-1"></i> Motor de Búsqueda</h6>
+                        <p class="small text-muted mb-0">Filtro en tiempo real por título, subtítulo o contenido de las publicaciones, con feedback cuando no hay resultados.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 bg-light rounded-3 border h-100">
+                        <h6 class="fw-bold"><i class="bi bi-sliders text-danger me-1"></i> Perfil Personalizado</h6>
+                        <p class="small text-muted mb-0">Modelo Profile 1 a 1 con el usuario para avatar, biografía y sitio web, configurable desde la interfaz web.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="fw-bold mb-2">Tecnologías Utilizadas</h5>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+                <span class="badge bg-primary fs-6">Python 3.10+</span>
+                <span class="badge bg-success fs-6">Django 5</span>
+                <span class="badge bg-secondary fs-6">SQLite</span>
+                <span class="badge bg-info text-dark fs-6">Bootstrap 5</span>
+                <span class="badge bg-dark fs-6">Pillow</span>
+                <span class="badge bg-warning text-dark fs-6">python-decouple</span>
+            </div>
+
+            <div class="alert alert-primary mb-0 d-flex align-items-center gap-3">
+                <i class="bi bi-github fs-2"></i>
+                <div>
+                    <strong>Código Fuente en GitHub</strong>
+                    <div class="small">Estructurado con historial limpio de commits, configurado con variables de entorno y listo para su clonación y despliegue.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
