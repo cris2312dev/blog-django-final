@@ -1,0 +1,32 @@
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv/
+
+# Python / Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Variables de entorno
+.env
+
+# Base de datos SQLite local
+db.sqlite3
+db.sqlite3-journal
+
+# Archivos multimedia subidos por usuarios
+media/
+
+# Archivos de logs y temporales
+*.log
+.DS_Store
+Thumbs.db
+
+# Configuración de editores e IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
